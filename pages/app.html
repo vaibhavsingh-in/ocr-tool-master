@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>OCR TOOL :: Karan Kumar</title>
+		<!-- CSS only -->
+		<link
+			href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"
+			rel="stylesheet"
+			integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65"
+			crossorigin="anonymous"
+		/>
+		<link rel="stylesheet" href="../styles/styles.css" />
+		<!-- JavaScript Bundle with Popper -->
+		<script
+			src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
+			integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p"
+			crossorigin="anonymous"
+		></script>
+		<script
+			src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"
+			integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF"
+			crossorigin="anonymous"
+		></script>
+		<script src="https://unpkg.com/tesseract.js@v2.0.2/dist/tesseract.min.js"></script>
+		<script src="../scripts/script.js" defer></script>
+
+		<!-- Favicons -->
+		<link rel="apple-touch-icon" href="./assets/gu-logo.png" sizes="180x180" />
+		<link
+			rel="icon"
+			href="../assets/gu-logo.png"
+			sizes="32x32"
+			type="image/png"
+		/>
+		<link
+			rel="icon"
+			href="../assets/gu-logo.png"
+			sizes="16x16"
+			type="image/png"
+		/>
+		<link rel="mask-icon" href="./assets/gu-logo.png" color="#712cf9" />
+		<link rel="icon" href="./assets/gu-logo.png" />
+	</head>
+	<body>
+		<header>
+			<nav class="navbar navbar-expand-md navbar-light fixed-top bg-light">
+				<div class="container-fluid">
+					<a class="navbar-brand" href="#"
+						><b>Optical Character Recognition Tool</b></a
+					>
+					<button
+						class="navbar-toggler"
+						type="button"
+						data-bs-toggle="collapse"
+						data-bs-target="#navbarCollapse"
+						aria-controls="navbarCollapse"
+						aria-expanded="false"
+						aria-label="Toggle navigation"
+					>
+						<span class="navbar-toggler-icon"></span>
+					</button>
+					<div class="collapse navbar-collapse" id="navbarCollapse">
+						<ul class="nav nav-pills">
+							<li class="nav-item">
+								<a
+									href="../index.html"
+									class="nav-link text-black"
+									aria-current="page"
+									>Home</a
+								>
+							</li>
+							<li class="nav-item">
+								<a href="#" class="nav-link active bg-black">Convert</a>
+							</li>
+							<li class="nav-item">
+								<a href="../pages/teams.html" class="nav-link text-black"
+									>Our Team</a
+								>
+							</li>
+							<a
+								class="navbar-brand-end"
+								href="https://www.galgotiasuniversity.edu.in/"
+								target="_blank"
+							>
+								<img
+									src="../assets/gu-logo.png"
+									alt="Bootstrap"
+									width="30"
+									height="auto"
+								/>
+							</a>
+						</ul>
+					</div>
+				</div>
+			</nav>
+		</header>
+		<section id="main" class="container-fluid">
+			<div id="input" class="input col-8 rounded">
+				<div id="primary-text">
+					<div id="dragText">Drag & Drop</div>
+					<span class="browseBtn">or Browse</span>
+					<input class="input" type="file" hidden />
+					<div class="desc">Only Supports JPG, PNG, JPEG</div>
+				</div>
+				<div id="secondary-text">
+					<div class="loader"></div>
+					<br />
+					<p>Extracting Text From your File</p>
+				</div>
+			</div>
+			<!-- ******************************************************* -->
+		</section>
+		<section id="Process-modal">
+			<!-- Modal -->
+			<div
+				class="modal fade"
+				id="exampleModal"
+				tabindex="-1"
+				aria-labelledby="exampleModalLabel"
+				aria-hidden="true"
+			>
+				<div class="modal-dialog">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h5 class="modal-title" id="exampleModalLabel">Extracted Text</h5>
+							<button
+								type="button"
+								class="btn-close"
+								data-bs-dismiss="modal"
+								aria-label="Close"
+							></button>
+						</div>
+						<textarea class="modal-body" user-select="false"></textarea>
+						<div class="modal-footer">
+							<button
+								type="button"
+								id="copyBtn"
+								class="btn copyBtn btn-secondary"
+								data-bs-dismiss="modal"
+							>
+								Copy
+							</button>
+							
+
+							<button type="button" class="btn downloadBtn btn-primary">
+								Download File <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+									<path d="M2 16C1.45 16 0.979333 15.8043 0.588 15.413C0.196 15.021 0 14.55 0 14V11H2V14H14V11H16V14C16 14.55 15.8043 15.021 15.413 15.413C15.021 15.8043 14.55 16 14 16H2ZM8 12L3 7L4.4 5.55L7 8.15V0H9V8.15L11.6 5.55L13 7L8 12Z" fill="white"/>
+									</svg>
+									
+							</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+<section id="notification">
+<div class=" btn btn-success copybox">Text Copied</div>
+</section>
+		<section id="info" class="container-fluid bg-black">
+			<div class="container">
+				<h2 class="">How this amazing technology works ?</h2>
+				<hr />
+				<p>
+					In today’s world, Deep learning have comes into play in which model
+					learns to perform classification tasks directly from images, text, or
+					sound. Deep learning models can achieve state-of-the-art accuracy,
+					sometimes exceeding human-level performance. Models are trained by
+					using a large set of labeled data and neural network architectures
+					that contain many layers.
+				</p>
+				<br />
+				<br />
+				<h2 class="">What is OCR ?</h2>
+				<hr />
+				<p>
+					OCR is a technology that analyzes the text of a page and turns the
+					letters into code that may be used to process information. OCR is a
+					technique for detecting printed or handwritten text characters inside
+					digital images of paper files, such as scanning paper records (optical
+					character recognition). OCR systems are hardware and software systems
+					that turn physical documents into machine-readable text.
+				</p>
+				<br />
+				<br />
+				<h2 class="">How to use it ?</h2>
+				<hr />
+				<ul>
+					<li class="fs65">
+						Click on the upload button or drag the file you want to get text
+						extracted on the page.
+					</li>
+					<li class="fs-6">
+						The upload stage will be started and image will be uploaded on
+						server to perform the required operations
+					</li>
+					<li class="fs-6">
+						Now conversion process has started to extract the text.
+					</li>
+					<li class="fs-6">
+						A dialogue box will appear, in which the extracted text is present.
+					</li>
+					<li class="fs-6">
+						Now you can either directly copy the text to clipboard by apprroving
+						the permission to access your clipboard.
+					</li>
+					<li class="fs-6">
+						Or you can also download the extracted text into diffrent formats as
+						required.
+					</li>
+				</ul>
+			</div>
+		</section>
+		<!-- FOOTER -->
+		<footer class="container">
+			<p class="float-end"><a href="#" class="text-black">Back to top</a></p>
+			<p>
+				&copy; 2022–2023 Karan Kumar, A Galgotia's University Student &middot;
+			</p>
+		</footer>
+		
+	</body>
+</html>
