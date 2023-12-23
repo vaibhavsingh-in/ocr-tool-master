@@ -1,0 +1,1 @@
+It is an tool by which we can change any handwritten documents or invoices, bills, receipts or any business documents or any official documents that needs to converted into editable text and can be converted into any type of document like docs, text, or pdf.
